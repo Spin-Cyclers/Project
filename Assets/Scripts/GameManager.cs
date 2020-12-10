@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
     void Start(){
         if(!PlayerPrefs.HasKey("Mute") || PlayerPrefs.GetInt("Mute") == 0)
             audioManager.Play("GameStartReset");
+            if(PlayerPrefs.HasKey("Mute") && PlayerPrefs.GetInt("Mute") == 1){
+         for(int i = 0; i<audioManager.sounds.Length; i++)
+            audioManager.Mute(audioManager.sounds[i].name);
+        }
     }
     //Display Game Over Screen
     public void GameOver(){
@@ -39,15 +43,14 @@ public class GameManager : MonoBehaviour
         HighScoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore",0).ToString();
         finalScore.text = "Score: " + score;
         GameOverUI.SetActive(true); 
-        if(!Over && (!PlayerPrefs.HasKey("Mute") || PlayerPrefs.GetInt("Mute") == 0)){
             audioManager.Stop("Music");
-        if(!isPaused)
+        if(!isPaused && !Over)
             audioManager.Play("Lose");
-        }
         Over = true;
     }   
      public void Restart(){
          SceneManager.LoadScene(SceneManager.GetActiveScene().name); //reload the current scene
+         
     }
      [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void ResetPlayerPrefs()
@@ -120,6 +123,7 @@ void OnApplicationPause(bool pauseStatus)
     // Update is called once per frame
     void Update()
     {
+        
     if(!isPaused){
        if (startSoundTimer<2)
             startSoundTimer += Time.deltaTime;
@@ -167,6 +171,9 @@ void OnApplicationPause(bool pauseStatus)
             else  PlayerPrefs.SetInt("Mute", -1*(PlayerPrefs.GetInt("Mute")-1)); // toggles between 1 and 0
             for(int i = 0; i<audioManager.sounds.Length; i++)
             audioManager.Mute(audioManager.sounds[i].name);
+            if(Over){
+                audioManager.Stop("Music");
+            }
             /*if(PlayerPrefs.GetInt("Mute") == 0 && !Over){
             audioManager.Play("Music");
              hasPlayed = true;
