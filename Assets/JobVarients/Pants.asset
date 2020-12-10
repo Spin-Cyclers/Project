@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c71ba4f5bca2f44baa1f8cd546ac8e2, type: 3}
+  m_Name: Pants
+  m_EditorClassIdentifier: 
+  jobTimeLimit: 60
+  jobStages:
+  - progressDuration: 0
+    completeExpirationDuration: 60
+    jobBuilding: 1
+    stageImage: {fileID: 9040011120679103557, guid: 45b9506b97e124b4ca9f7353d4408681,
+      type: 3}
+  - progressDuration: 5
+    completeExpirationDuration: 20
+    jobBuilding: 2
+    stageImage: {fileID: 5049669654728320085, guid: 45b9506b97e124b4ca9f7353d4408681,
+      type: 3}
+  - progressDuration: 5
+    completeExpirationDuration: 20
+    jobBuilding: 3
+    stageImage: {fileID: -7072456450764682418, guid: 45b9506b97e124b4ca9f7353d4408681,
+      type: 3}
+  - progressDuration: 5
+    completeExpirationDuration: 20
+    jobBuilding: 4
+    stageImage: {fileID: -8359524908667005571, guid: 7f5b506b08d8b8540941907ede030c43,
+      type: 3}
